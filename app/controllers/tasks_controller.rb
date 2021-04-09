@@ -37,8 +37,6 @@ class TasksController < ApplicationController
         category = current_user.categories.find(params[:category_id])
         task = category.tasks.find(params[:id])
         task.destroy
-        # redirect_to category_path(params[:category_id])
-        # redirect_to stored_location || home_path
         redirect_back fallback_location: home_path
     end
     private
