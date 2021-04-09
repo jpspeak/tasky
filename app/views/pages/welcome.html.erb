@@ -1,9 +1,10 @@
-<div class="container mx-auto">
+<div class="container mx-auto min-w-sm">
     <div class="flex flex-col items-center space-y-10 my-10">
-        <h1 class="font-bold text-7xl text-center text-gray-800 leading-normal">Organize your work <br />with Tasky</h1>
+        <h1 class="font-bold text-7xl text-center text-purple-500 leading-normal">Organize your work <br />with Tasky</h1>
         <%= link_to 'Get Started', new_user_registration_path, style: 'background: linear-gradient(159.49deg, #8E38D1 13.61%, #FA50CA 81.92%);', class: 'text-white hover:shadow-xl px-8 py-3 flex items-center text-2xl  text-white rounded-full leading-none' if !user_signed_in? %>
     </div>
     <div class="flex justify-center h-96">
-        <img src="/home-bg-image.svg"> 
+        <img src="/welcome_image.svg"> 
     </div>
 </div>
+<%= render 'shared/footer' %>

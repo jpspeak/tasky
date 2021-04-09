@@ -1,0 +1,20 @@
+<div class="container mx-auto">
+   
+    <div class="bg-gray-50 shadow rounded w-full max-w-lg mx-auto mt-10 py-4 px-6">      
+        <h1 class="font-semibold text-lg mb-6">Edit task for <span class="text-purple-500"><%= @category.name %></span> category</h1>
+        <% if @task.errors.full_messages.length != 0  %>
+            <div class="border border-red-500 bg-red-200 text-red-800 rounded p-2 mb-4">
+                <% @task.errors.full_messages.each do  |msg| %>
+                    <p class="text-red-500 ml-1"><%= msg %></p>
+                <% end %>
+            </div>
+        <% end %>
+        <%= form_with(model: @task, url: category_task_path) do |form| %>
+            <%= form.label :name, "Enter you task" %>
+            <%= form.text_field :name, placeholder: 'e.g., Learn ruby on rails basics', class: "border mt-1 px-4 py-2 rounded w-full" %>
+            <%= form.label :schedule_date, "Schedule due date", class: "block mt-4 text-sm" %>
+            <%= form.date_field :schedule_date, class: "border mt-1 px-4 py-2 rounded w-full" %>
+            <%= form.submit "Save", class: "px-4 py-2 rounded bg-purple-500 text-white mt-4 block ml-auto" %>
+        <% end %>  
+    </div>
+</div>

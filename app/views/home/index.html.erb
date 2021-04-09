@@ -1,1 +1,27 @@
-<h1>Home page</h1>
+<div class="container mx-auto">
+    <div class="flex mx-8 space-x-8 min-h-screen">
+        <div class="pt-10 w-96 border-r-2 pr-4">
+            <%= render 'shared/categories_sidebar' %>
+        </div>
+        <div class="w-full pt-10">
+            <% if @todays_tasks.length != 0 %>
+                <h3 class="text-3xl font-semibold flex-grow text-purple-500 mb-8">Today's Tasks</h3>
+                <% @todays_tasks.each do |todays_task| %>
+                    <div class="bg-white shadow px-4 py-2 flex items-center mb-2">
+                        <div class="flex-grow">
+                            <p class="text-xs text-purple-500 font-semibold"><%= todays_task.category.name %></p>
+                            <p class="font-semibold text-lg"><%= todays_task.name %></p>
+                        </div>
+                        <%# category_task_path(@category.id, task.id) %>
+                        <%= link_to "Set as completed", category_task_path(todays_task.category.id, todays_task.id), method: :delete, data: {confirm: "Are you sure?"}, class: "text-gray-500 border hover:text-white hover:border-purple-500 hover:bg-purple-500  rounded shadow px-2" %>
+                    </div>
+                <% end %>
+            <% else %>
+                <div>
+                    <img src="/completed.svg" class="mx-auto h-56 mt-28">
+                    <h3 class="text-center text-2xl font-semibold mt-10 text-gray-500">You have no more task for today, Enjoy!</h3>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container mx-auto">
+    
+    <div class="bg-white rounded w-full max-w-lg mx-auto mt-10 py-4 px-6">      
+        <h1 class="font-semibold text-lg text-gray-800 mb-6">Edit category</h1>
+        <% if @category.errors.full_messages.length != 0  %>
+            <div class="border border-red-500 bg-red-200 text-red-800 rounded p-2 mb-4">
+                <% @category.errors.full_messages.each do  |msg| %>
+                    <p class="text-red-500 ml-1"><%= msg %></p>
+                <% end %>
+            </div>
+        <% end %>
+        <%= form_with model: @category, :html => {:class => "mt-6"} do |form| %>
+            <%= form.label :name %>
+            <%= form.text_field :name, placeholder: 'Enter category name', class: "border mt-1 px-4 py-2 rounded w-full" %>
+            <%= form.submit "Save", class: "px-4 py-2 cursor-pointer hover:shadow  rounded bg-purple-500 text-white mt-4 block ml-auto" %>
+        <% end %>  
+    </div>
+</div>

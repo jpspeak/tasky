@@ -6,4 +6,9 @@ Rails.application.routes.draw do
 
   get '/home', to: 'home#index'
 
+  scope 'home' do
+    resources :categories do 
+      resources :tasks
+    end
+  end
 end
