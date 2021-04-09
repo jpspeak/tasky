@@ -13,7 +13,7 @@ class TasksController < ApplicationController
         if @task.save
             redirect_to category_path(params[:category_id])
         else
-            render "new", collection: @article
+            render :new, collection: @article
         end
     end
 
@@ -29,7 +29,7 @@ class TasksController < ApplicationController
         if task
             redirect_to category_path(params[:category_id])
         else
-            render "edit"
+            render :edit
         end
     end
 
