@@ -10,7 +10,7 @@
             </div>
         <% end %>
         <%= form_with(model: @task, url: category_task_path) do |form| %>
-            <%= form.label :name, "Enter you task" %>
+            <%= form.label :name, "Enter your task" %>
             <%= form.text_field :name, placeholder: 'e.g., Learn ruby on rails basics', class: "border mt-1 px-4 py-2 rounded w-full" %>
             <%= form.label :schedule_date, "Schedule due date", class: "block mt-4 text-sm" %>
             <%= form.date_field :schedule_date, class: "border mt-1 px-4 py-2 rounded w-full" %>
