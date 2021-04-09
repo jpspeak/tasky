@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>JournalPlanner</title>
-    <%# <meta name="viewport" content="width=device-width,initial-scale=1"> %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -44,5 +44,10 @@
     <% end %>
     <!--<p class="notice"><%= notice %></p>-->
     <%= yield %>
+    <script>
+      function toggleNavbar(){
+        document.getElementById("drawer").classList.toggle("hidden")
+      }
+    </script>
   </body>
 </html>

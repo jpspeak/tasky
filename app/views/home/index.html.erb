@@ -1,7 +1,7 @@
 <div class="container mx-auto">
-    <div class="flex mx-8 space-x-8 min-h-screen">
-        <div class="pt-10 w-96 border-r-2 pr-4">
-            <%= render 'shared/categories_sidebar' %>
+    <div class="flex mx-8 sm:space-x-8">
+        <div class="hidden sm:block pt-10 w-96 border-r-2 pr-4 ">
+            <%= render 'shared/sidebar' %>
         </div>
         <div class="w-full pt-10">
             <% if @todays_tasks.length != 0 %>

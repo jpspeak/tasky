@@ -3,14 +3,10 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(resource)
         home_path
     end
-    
-    private 
-    def store_location
-        session[:stored_location] = request.path
-    end
 
-    def stored_location
-        session[:stored_location]
+    def set_global_data
+        @categories = current_user.categories.order(:created_at)
+        @todays_tasks = current_user.tasks.where(schedule_date: DateTime.current.to_date).includes(:category)
     end
 
 end

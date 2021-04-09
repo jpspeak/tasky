@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
     before_action :authenticate_user!
-    before_action :store_location, only: [:destroy]
+    before_action :set_global_data, except: [:destroy]
+    
     def new
         @task =  Task.new
         @category = current_user.categories.find(params[:category_id])  

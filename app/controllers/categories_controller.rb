@@ -1,15 +1,14 @@
 class CategoriesController < ApplicationController
     before_action :authenticate_user!
-    
+    before_action :set_global_data, except: [:destroy]
+
     def new
         @category = Category.new
     end
 
     def show 
-        @categories = current_user.categories
         @category = @categories.find(params[:id])
         @tasks = @category.tasks.order(:created_at)
-        @todays_tasks = current_user.tasks.where(schedule_date: DateTime.current.to_date).includes(:category)
     end
 
     def create
