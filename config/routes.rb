@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :categories do 
       resources :tasks
     end
+    delete 'categories/:category_id/tasks/:id/complete', :to => 'tasks#complete'
   end
 end

@@ -12,6 +12,7 @@ class TasksController < ApplicationController
         @task = @category.tasks.create(task_params)
 
         if @task.save
+            flash[:success] = "Task successfully added"
             redirect_to category_path(params[:category_id])
         else
             render :new, collection: @article
@@ -28,16 +29,26 @@ class TasksController < ApplicationController
         @task =  @category.tasks.find(params[:id])
         task = @task.update(task_params)
         if task
+            flash[:success] = "Task successfully updated"
             redirect_to category_path(params[:category_id])
         else
             render :edit
         end
     end
 
+    def complete
+        category = current_user.categories.find(params[:category_id])
+        task = category.tasks.find(params[:id])
+        task.destroy
+        flash[:success] = "Task completed"
+        redirect_back fallback_location: home_path
+    end
+
     def destroy
         category = current_user.categories.find(params[:category_id])
         task = category.tasks.find(params[:id])
         task.destroy
+        flash[:success] = "Task successfully deleted"
         redirect_back fallback_location: home_path
     end
     private

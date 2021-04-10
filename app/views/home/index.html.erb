@@ -12,8 +12,7 @@
                             <p class="text-xs text-purple-500 font-semibold"><%= todays_task.category.name %></p>
                             <p class="font-semibold text-lg"><%= todays_task.name %></p>
                         </div>
-                        <%# category_task_path(@category.id, task.id) %>
-                        <%= link_to "Set as completed", category_task_path(todays_task.category.id, todays_task.id), method: :delete, data: {confirm: "Are you sure?"}, class: "text-gray-500 border hover:text-white hover:border-purple-500 hover:bg-purple-500  rounded shadow px-2" %>
+                        <%= link_to "Set as completed", "/home/categories/#{todays_task.category.id}/tasks/#{todays_task.id}/complete", method: :delete, data: {confirm: "Are you sure?"}, class: "text-gray-500 border hover:text-white hover:border-purple-500 hover:bg-purple-500  rounded shadow px-2" %>
                     </div>
                 <% end %>
             <% else %>
